@@ -1,0 +1,30 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - dev
+      - qa
+      - prod
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy to Environment
+        run: |
+          echo "Deploying to ${{ github.ref_name }} environment..."
+          if [[ "${{ github.ref_name }}" == "dev" ]]; then
+            echo "✅ Deploying to Dev"
+            # Add your dev deploy logic
+          elif [[ "${{ github.ref_name }}" == "qa" ]]; then
+            echo "✅ Deploying to QA"
+            # Add your QA deploy logic
+          elif [[ "${{ github.ref_name }}" == "prod" ]]; then
+            echo "✅ Deploying to Prod"
+            # Add your production deploy logic
+          fi
