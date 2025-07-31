@@ -1,0 +1,36 @@
+name: CI Pipeline
+
+on:
+  pull_request:
+    branches: [main, dev, qa, prod]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run linter (skip install)
+        run: |
+          echo "Skipping npm install"
+          echo "Add your lint command here"
+          # Example: eslint . --no-eslintrc
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run tests (skip install)
+        run: |
+          echo "Skipping npm install"
+          echo "Add your test command here"
+          # Example: node test.js
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build the app (skip install)
+        run: |
+          echo "Skipping npm install"
+          echo "Add your build command here"
+          # Example: node build.js
