@@ -2,23 +2,18 @@ name: CI
 
 on:
   push:
-    branches:
-      - main
-      - dev
-      - qa
-      - prod
-
+    branches: [main, dev, qa, prod]
   pull_request:
-    branches:
-      - main
-      - dev
-      - qa
-      - prod
+    branches: [main, dev, qa, prod]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Display project files (test step)
+        run: ls -la
+
